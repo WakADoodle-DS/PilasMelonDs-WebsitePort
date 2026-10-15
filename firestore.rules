@@ -39,7 +39,7 @@ service cloud.firestore {
       allow list: if false;
 
       allow create: if signedIn()
-        && roomCode.matches('^[A-HJ-NP-Z2-9]{6}$')
+        && roomCode.matches('^[A-HJ-NP-Z2-9]{8}$')
         && request.resource.data.keys().hasOnly([
           'title', 'ownerUid', 'memberIds', 'memberNames',
           'status', 'createdAt', 'expiresAt'

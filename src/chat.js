@@ -1,6 +1,6 @@
 import { firebaseConfig, isChatConfigured } from "./chat-config.js";
 
-const FIREBASE_VERSION = "12.19.0";
+const FIREBASE_VERSION = "13.0.0";
 const FIREBASE_BASE = "https://www.gstatic.com/firebasejs/" + FIREBASE_VERSION + "/";
 const ROOM_COLLECTION = "gavindsChatRooms";
 const MAX_MEMBERS = 12;
@@ -455,7 +455,10 @@ async function initializeChat() {
     auth = authSdk.getAuth(app);
     db = firestoreSdk.getFirestore(app);
     window.__gavinChatFirestore = firestoreSdk;
-    await authSdk.signInAnonymously(auth);
+    // Reuse the browser's existing anonymous session so a refresh doesn't
+    // accidentally switch the user's Firebase UID while they are in a room.
+    await auth.authStateReady();
+    if (!auth.currentUser) await authSdk.signInAnonymously(auth);
     currentUser = auth.currentUser;
     backendReady = Boolean(currentUser);
     if (!backendReady) throw new Error("Anonymous sign-in did not return a temporary session.");

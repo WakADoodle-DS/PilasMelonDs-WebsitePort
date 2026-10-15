@@ -72,6 +72,7 @@ const advancedContent = $("advancedContent");
 const rendererSelect = $("rendererSelect");
 const accentSelect = $("accentSelect");
 const canvasSizeSelect = $("canvasSizeSelect");
+const themeSelect = $("themeSelect");
 const resetBindingsBtn = $("resetBindingsBtn");
 const bindingsPanel = $("bindingsPanel");
 const stage = document.querySelector(".stage");
@@ -89,6 +90,7 @@ const rendererStorageKey = "pilas.renderer";
 const bindingsStorageKey = "pilas.keyBindings";
 const accentStorageKey = "pilas.accent";
 const canvasSizeStorageKey = "pilas.canvasSize";
+const themeStorageKey = "gavinds.theme";
 const consoleModeStorageKey = "pilas.consoleMode";
 const bootModeStorageKey = "pilas.bootMode";
 const dsiDspHleStorageKey = "pilas.dsiDspHle";
@@ -1469,15 +1471,23 @@ function applyAccent(value) {
 }
 
 function applyCanvasSize(value) {
-  const size = ["compact", "normal", "large"].includes(value) ? value : "normal";
-  document.documentElement.dataset.canvasSize = size;
+  const size = ["smallest", "small", "default", "big", "biggest"].includes(value) ? value : "default";
+  document.documentElement.dataset.consoleSize = size;
   canvasSizeSelect.value = size;
   storageSet(canvasSizeStorageKey, size);
 }
 
+function applyTheme(value) {
+  const theme = ["ds", "alien", "gameboy", "gba"].includes(value) ? value : "ds";
+  document.documentElement.dataset.theme = theme;
+  themeSelect.value = theme;
+  storageSet(themeStorageKey, theme);
+}
+
 function applyStoredUiOptions() {
   applyAccent(storageGet(accentStorageKey, "mint"));
-  applyCanvasSize(storageGet(canvasSizeStorageKey, "normal"));
+  applyCanvasSize(storageGet(canvasSizeStorageKey, "default"));
+  applyTheme(storageGet(themeStorageKey, "ds"));
   consoleModeSelect.value = storageGet(consoleModeStorageKey, "nds") === "dsi" ? "dsi" : "nds";
   bootModeSelect.value = storageGet(bootModeStorageKey, "direct") === "firmware" ? "firmware" : "direct";
   dsiDspHleInput.checked = storageGet(dsiDspHleStorageKey, "1") !== "0";
@@ -2987,6 +2997,10 @@ accentSelect.addEventListener("change", () => {
 
 canvasSizeSelect.addEventListener("change", () => {
   applyCanvasSize(canvasSizeSelect.value);
+});
+
+themeSelect.addEventListener("change", () => {
+  applyTheme(themeSelect.value);
 });
 
 advancedToggleBtn.addEventListener("click", () => {

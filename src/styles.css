@@ -1148,3 +1148,78 @@ p {
 .fullscreen-active .ds-console {
   z-index: auto;
 }
+
+
+/* GavinDS console size presets */
+:root[data-console-size="smallest"] { --console-scale: 0.58; }
+:root[data-console-size="small"] { --console-scale: 0.76; }
+:root[data-console-size="default"] { --console-scale: 1; }
+:root[data-console-size="big"] { --console-scale: 1.12; }
+:root[data-console-size="biggest"] { --console-scale: 1.24; }
+.ds-console {
+  transform: scale(var(--console-scale, 1));
+  transform-origin: center center;
+  transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+:root[data-theme="alien"] {
+  --accent: #8dff4f;
+  --accent-ink: #102008;
+  --page: #07130b;
+  --panel: #102117;
+  --panel-2: #183321;
+  --line: #315a39;
+  --muted: #a3c6a4;
+}
+:root[data-theme="alien"] .stage {
+  background: radial-gradient(ellipse at 50% 35%, #1b5b36 0%, #0b2419 48%, #050d0a 100%);
+}
+:root[data-theme="alien"] .ds-console {
+  background: linear-gradient(145deg, #8bbd70, #365b36 52%, #b6d49a);
+  border-color: #c3efa0;
+  box-shadow: 0 22px 60px #50ff4b30, inset 0 2px 4px #e6ffd5;
+}
+:root[data-theme="gameboy"] {
+  --accent: #9bbc0f;
+  --accent-ink: #172000;
+  --page: #172016;
+  --panel: #202d20;
+  --panel-2: #2d3b2a;
+  --line: #53674a;
+  --ink: #e2f0c4;
+  --muted: #a8bc91;
+}
+:root[data-theme="gameboy"] .stage {
+  background: radial-gradient(ellipse at 50% 35%, #596b46, #263725 58%, #101a12);
+}
+:root[data-theme="gameboy"] .ds-console {
+  background: linear-gradient(145deg, #b9c99a, #7c9462 55%, #d1d9b5);
+  border-color: #e0e8c4;
+  box-shadow: 0 22px 60px #a5d64c24, inset 0 2px 4px #f2ffdd;
+}
+:root[data-theme="gba"] {
+  --accent: #a98bff;
+  --accent-ink: #160c2a;
+  --page: #100b20;
+  --panel: #1b1430;
+  --panel-2: #292044;
+  --line: #493a70;
+  --muted: #b6a9d7;
+}
+:root[data-theme="gba"] .stage {
+  background: radial-gradient(ellipse at 50% 35%, #47347b, #211638 55%, #0c0815);
+}
+:root[data-theme="gba"] .ds-console {
+  background: linear-gradient(145deg, #c6b5f0, #6e5b9f 55%, #e1d5ff);
+  border-color: #e4d9ff;
+  box-shadow: 0 22px 60px #a98bff30, inset 0 2px 4px #fff;
+}
+:root[data-theme="ds"] .ds-console {
+  /* Keep the original silver DS appearance */
+  filter: none;
+}
+@media (max-width: 900px) {
+  .ds-console { transform: scale(min(var(--console-scale, 1), 0.92)); }
+}
+@media (max-width: 520px) {
+  .ds-console { transform: scale(min(var(--console-scale, 1), 0.78)); }
+}

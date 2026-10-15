@@ -1148,3 +1148,115 @@ p {
 .fullscreen-active .ds-console {
   z-index: auto;
 }
+
+
+
+/* GavinDS screen-size presets: resize the actual emulator display, not the shell. */
+:root[data-console-size="smallest"] {
+  --ds-screen-height: 52%;
+  --ds-screen-max-width: 36%;
+}
+:root[data-console-size="small"] {
+  --ds-screen-height: 66%;
+  --ds-screen-max-width: 42%;
+}
+:root[data-console-size="default"] {
+  --ds-screen-height: 84%;
+  --ds-screen-max-width: 50%;
+}
+:root[data-console-size="big"] {
+  --ds-screen-height: 90%;
+  --ds-screen-max-width: 54%;
+}
+:root[data-console-size="biggest"] {
+  --ds-screen-height: 94%;
+  --ds-screen-max-width: 58%;
+}
+
+#screenCanvas {
+  height: var(--ds-screen-height, 84%);
+  max-height: var(--ds-screen-height, 84%);
+  max-width: var(--ds-screen-max-width, 50%);
+  transition: height 180ms ease, max-width 180ms ease;
+}
+
+/* Keep all five presets proportional on narrow screens too. */
+@media (max-width: 520px) {
+  :root[data-console-size="smallest"] {
+    --ds-screen-height: 52%;
+    --ds-screen-max-width: 36%;
+  }
+  :root[data-console-size="small"] {
+    --ds-screen-height: 66%;
+    --ds-screen-max-width: 42%;
+  }
+  :root[data-console-size="default"] {
+    --ds-screen-height: 88%;
+    --ds-screen-max-width: 52%;
+  }
+  :root[data-console-size="big"] {
+    --ds-screen-height: 91%;
+    --ds-screen-max-width: 55%;
+  }
+  :root[data-console-size="biggest"] {
+    --ds-screen-height: 94%;
+    --ds-screen-max-width: 58%;
+  }
+}
+
+/* Themes */
+:root[data-theme="alien"] {
+  --accent: #8dff4f;
+  --accent-ink: #102008;
+  --page: #07130b;
+  --panel: #102117;
+  --panel-2: #183321;
+  --line: #315a39;
+  --muted: #a3c6a4;
+}
+:root[data-theme="alien"] .stage {
+  background: radial-gradient(ellipse at 50% 35%, #1b5b36 0%, #0b2419 48%, #050d0a 100%);
+}
+:root[data-theme="alien"] .ds-console {
+  background: linear-gradient(145deg, #8bbd70, #365b36 52%, #b6d49a);
+  border-color: #c3efa0;
+  box-shadow: 0 22px 60px #50ff4b30, inset 0 2px 4px #e6ffd5;
+}
+:root[data-theme="gameboy"] {
+  --accent: #9bbc0f;
+  --accent-ink: #172000;
+  --page: #172016;
+  --panel: #202d20;
+  --panel-2: #2d3b2a;
+  --line: #53674a;
+  --ink: #e2f0c4;
+  --muted: #a8bc91;
+}
+:root[data-theme="gameboy"] .stage {
+  background: radial-gradient(ellipse at 50% 35%, #596b46, #263725 58%, #101a12);
+}
+:root[data-theme="gameboy"] .ds-console {
+  background: linear-gradient(145deg, #b9c99a, #7c9462 55%, #d1d9b5);
+  border-color: #e0e8c4;
+  box-shadow: 0 22px 60px #a5d64c24, inset 0 2px 4px #f2ffdd;
+}
+:root[data-theme="gba"] {
+  --accent: #a98bff;
+  --accent-ink: #160c2a;
+  --page: #100b20;
+  --panel: #1b1430;
+  --panel-2: #292044;
+  --line: #493a70;
+  --muted: #b6a9d7;
+}
+:root[data-theme="gba"] .stage {
+  background: radial-gradient(ellipse at 50% 35%, #47347b, #211638 55%, #0c0815);
+}
+:root[data-theme="gba"] .ds-console {
+  background: linear-gradient(145deg, #c6b5f0, #6e5b9f 55%, #e1d5ff);
+  border-color: #e4d9ff;
+  box-shadow: 0 22px 60px #a98bff30, inset 0 2px 4px #fff;
+}
+:root[data-theme="ds"] .ds-console {
+  filter: none;
+}

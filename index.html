@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pilas-melonDS</title>
+  <title>GavinDS</title>
   <link rel="stylesheet" href="./src/styles.css">
 </head>
 <body>
   <main class="app-shell">
     <header class="topbar">
       <div class="brand">
-        <span class="mark">PM</span>
+        <span class="mark">GDS</span>
         <div>
-          <h1>Pilas-melonDS</h1>
+          <h1>GavinDS</h1>
           <p id="statusText">Initializing</p>
         </div>
       </div>
@@ -277,11 +277,22 @@
                 </select>
               </label>
               <label>
-                Canvas
+                Console size
                 <select id="canvasSizeSelect">
-                  <option value="compact">Compact</option>
-                  <option value="normal">Normal</option>
-                  <option value="large">Large</option>
+                  <option value="smallest">Smallest</option>
+                  <option value="small">Small</option>
+                  <option value="default">Default</option>
+                  <option value="big">Big</option>
+                  <option value="biggest">Biggest</option>
+                </select>
+              </label>
+              <label>
+                Theme
+                <select id="themeSelect">
+                  <option value="ds">Classic DS</option>
+                  <option value="alien">Alien</option>
+                  <option value="gameboy">Game Boy</option>
+                  <option value="gba">Game Boy Advance</option>
                 </select>
               </label>
             </div>

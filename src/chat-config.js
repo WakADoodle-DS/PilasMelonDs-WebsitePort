@@ -3,10 +3,10 @@
 // These browser config values are public; Firestore Security Rules are what protect your data.
 // NEVER put a service-account/private key in this file.
 export const firebaseConfig = {
-  apiKey: "PASTE_FIREBASE_WEB_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  appId: "YOUR_FIREBASE_WEB_APP_ID"
+  apiKey: "AIzaSyDxMBmz4ilPrqAj4gWg8mB5G2jO4Wpms_s",
+  authDomain: "gavinds-72336.firebaseapp.com",
+  projectId: "gavinds-72336",
+  appId: "1:480907016103:web:326d81f9de83440c56a882"
 };
 
 export function isChatConfigured() {
@@ -15,7 +15,8 @@ export function isChatConfigured() {
     const value = String(firebaseConfig[key] || "");
     return value.length > 0 &&
       !value.includes("PASTE_") &&
-      !value.includes("YOUR_PROJECT_ID") &&
-      !value.includes("YOUR_FIREBASE_WEB_APP_ID");
+      !value.includes("gavinds-72336") &&
+      !value.includes("1:480907016103:web:326d81f9de83440c56a882");
   });
 }
+a

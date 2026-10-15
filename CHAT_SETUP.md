@@ -32,7 +32,7 @@ The rules are designed to:
 
 ## 4. Allow GitHub Pages to sign in
 
-In Firebase Authentication → Settings → Authorized domains, add the domain serving your GitHub Pages site (for this repository, it will normally be `wakad oodle-ds.github.io` without a path; use the exact origin shown in your browser). Do not include `/PilasMelonDs-WebsitePort/` or any other URL path.
+In Firebase Authentication → Settings → Authorized domains, add the domain serving your GitHub Pages site (for this repository, it will normally be `wakadoodle-ds.github.io` without a path; use the exact origin shown in your browser). Do not include `/PilasMelonDs-WebsitePort/` or any other URL path.
 
 ## 5. Turn on automatic data cleanup
 

@@ -363,6 +363,85 @@
     </div>
   </div>
 
+
+  <aside id="chatDock" class="chat-dock" aria-label="GavinDS community chat">
+    <button id="chatLaunchBtn" class="chat-launch" type="button" aria-expanded="false" aria-controls="chatWindow">
+      <span class="chat-launch-icon" aria-hidden="true">✦</span>
+      <span>Community Chat</span>
+      <span class="chat-launch-status" aria-hidden="true"></span>
+    </button>
+    <section id="chatWindow" class="chat-window" role="dialog" aria-labelledby="chatTitle" hidden>
+      <header class="chat-header">
+        <div class="chat-header-title">
+          <strong id="chatTitle">GavinDS Chat</strong>
+          <span id="chatConnectionState" role="status">Chat setup needed</span>
+        </div>
+        <button id="chatMinimizeBtn" class="chat-icon-button" type="button" aria-label="Minimize chat">−</button>
+      </header>
+      <div class="chat-safety-note">
+        Temporary names don't make messages private. Rooms are invite-code only, but everyone in a room can read its messages. Don't share personal information.
+      </div>
+      <div class="chat-content">
+        <div id="chatSetupNotice" class="chat-setup-notice" hidden>
+          <strong>One-time setup needed</strong>
+          <span>Live chat needs a Firebase project. See <code>CHAT_SETUP.md</code> in the repository to connect it securely.</span>
+        </div>
+        <div id="chatLobby" class="chat-lobby">
+          <p class="chat-intro">Meet friends while you play. No account or permanent username required.</p>
+          <label class="chat-field">
+            Temporary username <span>Required for hosting and joining</span>
+            <input id="chatUsernameInput" type="text" maxlength="20" minlength="1" autocomplete="nickname" placeholder="Choose a nickname">
+          </label>
+          <div class="chat-mode-buttons">
+            <button id="chatCreateModeBtn" class="chat-primary-button" type="button">Create a room</button>
+            <button id="chatJoinModeBtn" type="button">Join with code</button>
+          </div>
+          <form id="chatCreateForm" class="chat-form" hidden>
+            <label class="chat-field">
+              Room name
+              <input id="chatRoomNameInput" type="text" maxlength="32" placeholder="Game night">
+            </label>
+            <button class="chat-primary-button" type="submit">Create room and get code</button>
+          </form>
+          <form id="chatJoinForm" class="chat-form" hidden>
+            <label class="chat-field">
+              Six-character room code
+              <input id="chatRoomCodeInput" type="text" maxlength="6" minlength="6" autocapitalize="characters" autocomplete="off" placeholder="ABC234">
+            </label>
+            <button class="chat-primary-button" type="submit">Join room</button>
+          </form>
+          <p id="chatLobbyError" class="chat-error" role="alert" hidden></p>
+        </div>
+        <div id="chatRoomView" class="chat-room-view" hidden>
+          <div class="chat-room-heading">
+            <div class="chat-room-name-block">
+              <strong id="chatActiveRoomName">Room</strong>
+              <span>Code <b id="chatActiveRoomCode">------</b></span>
+            </div>
+            <button id="chatCopyCodeBtn" type="button">Copy code</button>
+          </div>
+          <p class="chat-room-hint">Share the code with people you want to invite.</p>
+          <ol id="chatMessages" class="chat-messages" aria-label="Room messages" aria-live="polite"></ol>
+          <form id="chatSendForm" class="chat-send-form">
+            <label class="chat-sr-only" for="chatMessageInput">Message</label>
+            <textarea id="chatMessageInput" rows="2" maxlength="400" placeholder="Write a message…" aria-describedby="chatSendHelp"></textarea>
+            <button class="chat-send-button" type="submit" aria-label="Send message">Send</button>
+          </form>
+          <span id="chatSendHelp" class="chat-send-help">400 characters max. Keep it friendly.</span>
+          <div class="chat-room-footer">
+            <span id="chatMemberCount">1 / 12 members</span>
+            <span class="chat-room-footer-actions">
+              <button id="chatLeaveRoomBtn" type="button">Leave</button>
+              <button id="chatCloseRoomBtn" class="chat-danger-button" type="button" hidden>Close room</button>
+            </span>
+          </div>
+          <p id="chatRoomError" class="chat-error" role="alert" hidden></p>
+        </div>
+      </div>
+    </section>
+  </aside>
+
   <script type="module" src="./src/app.js"></script>
+  <script type="module" src="./src/chat.js"></script>
 </body>
 </html>

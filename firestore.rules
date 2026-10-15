@@ -70,7 +70,7 @@ service cloud.firestore {
         && request.resource.data.diff(resource.data).affectedKeys()
           .hasOnly(['memberIds', 'memberNames'])
         && request.resource.data.memberIds is list
-        && request.resource.data.memberIds.size() >= 1
+        && request.resource.data.memberIds.size() >= 0
         && request.resource.data.memberIds.size() <= 12
         && request.resource.data.memberNames is map
         && request.resource.data.memberNames.keys().hasAll(request.resource.data.memberIds)

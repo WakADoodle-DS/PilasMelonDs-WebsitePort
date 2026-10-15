@@ -23,7 +23,7 @@ In Firebase Console, open Firestore Database → Rules and replace the rules wit
 
 The rules are designed to:
 - Require a Firebase-anonymous guest session.
-- Allow joining by direct six-character room code, without a public room directory.
+- Allow joining by direct eight-character room code, without a public room directory.
 - Require the host to provide a temporary name when creating the room.
 - Limit rooms to 12 members and names to 20 characters.
 - Allow members to change only their own membership/name.
@@ -45,7 +45,7 @@ In Firestore's TTL settings, configure an `expiresAt` policy for the `gavindsCha
 1. Push the branch and deploy a test copy or preview.
 2. Open the site in two separate browsers/devices.
 3. In the first, enter a temporary username and create a room.
-4. Share the six-character code with the second browser. Enter a different temporary username and join.
+4. Share the eight-character code with the second browser. Enter a different temporary username and join.
 5. Verify that messages arrive live, unknown codes fail, the room stops accepting messages after expiry, and the host can close it.
 
 Keep testing to people you trust before sharing the room feature more widely. A room is not publicly listed, but anyone with its code can enter. Temporary usernames do not make messages private from room members or from the service/database administrator. Do not share real names, school details, contact information, passwords, or other personal information. These first-pass features do not include automated moderation, message reports, or robust anti-spam controls; those should be added before a large public launch.

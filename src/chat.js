@@ -8,7 +8,7 @@ const MAX_MESSAGE_LENGTH = 400;
 const ROOM_LIFETIME_MS = 24 * 60 * 60 * 1000;
 const MESSAGE_LIFETIME_MS = 24 * 60 * 60 * 1000;
 const ROOM_CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-const ROOM_CODE_LENGTH = 6;
+const ROOM_CODE_LENGTH = 8;
 
 const $ = (id) => document.getElementById(id);
 
@@ -287,7 +287,7 @@ async function joinRoom(event) {
     const username = validateUsername();
     const code = roomCodeInput.value.trim().toUpperCase();
     if (!new RegExp("^[A-HJ-NP-Z2-9]{" + ROOM_CODE_LENGTH + "}$").test(code)) {
-      throw new Error("Enter the six-character room code exactly as shown by the host.");
+      throw new Error("Enter the eight-character room code exactly as shown by the host.");
     }
 
     const dbApi = window.__gavinChatFirestore;
